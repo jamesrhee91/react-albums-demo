@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Text, TextInput, TouchableOpacity, View } from 'react-native'
 import { Actions } from 'react-native-router-flux'
-import styles from './styles'
+// import styles from './styles'
 
 export default class Authentication extend Component {
   constructor() {
@@ -9,11 +9,11 @@ export default class Authentication extend Component {
     this.state = { username: null, password: null }
   }
 
-  userSignup() {
+  userSignup = () => {
     Actions.HomePage()
   }
 
-  userLogin() {
+  userLogin = () => {
     Actions.HomePage()
   }
 
@@ -36,8 +36,52 @@ export default class Authentication extend Component {
             style={styles.inputText}
             value={this.state.username}
           />
+
+          <TextInput
+            editable={true}
+            onChangeText={(password) => this.setState({password})}
+            placeholder='Password'
+            ref='password'
+            returnKeyType='next'
+            secureTextEntry={true}
+            style={styles.inputText}
+            value={this.state.password}
+          />
+
+          <TouchableOpacity style={styles.buttonWrapper} onPress={this.userLogin}>
+            <Text style={styles.buttonText}>Log In</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity style={styles.buttonWrapper} onPress={this.userSignup}>
+            <Text style={styles.buttonText}>Sign Up</Text>
+          </TouchableOpacity>
         </View>
       </View>
     )
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#F5FCFF',
+  },
+  title: {
+    color: 'red',
+  },
+  form: {
+    
+  },
+  welcome: {
+    fontSize: 20,
+    textAlign: 'center',
+    margin: 10,
+  },
+  instructions: {
+    textAlign: 'center',
+    color: '#333333',
+    marginBottom: 5,
+  },
+});
