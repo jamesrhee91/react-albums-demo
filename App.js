@@ -5,6 +5,7 @@
  */
 
 import React, { Component } from 'react';
+import { Router, Scene } from ''
 import {
   Platform,
   StyleSheet,
@@ -22,17 +23,23 @@ const instructions = Platform.select({
 export default class App extends Component<{}> {
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit App.js
-        </Text>
-        <Text style={styles.instructions}>
-          {instructions}
-        </Text>
-      </View>
+      <Router>
+        <Scene key='root'>
+          <Scene
+            component={Authentication}
+            hideNavBar={true}
+            initial={true}
+            key='Authentication'
+            title='Authentication'
+          />
+          <Scene
+            component={HomePage}
+            hideNavBar={true}
+            key='HomePage'
+            title='Home Page'
+          />
+        </Scene>
+      </Router>
     );
   }
 }
