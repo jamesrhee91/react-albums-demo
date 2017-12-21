@@ -5,13 +5,15 @@
  */
 
 import React, { Component } from 'react';
-import { Router, Scene } from ''
+import { Router, Scene } from 'react-native-router-flux'
 import {
   Platform,
   StyleSheet,
   Text,
   View
 } from 'react-native';
+import Authentication from './routes/Authentication'
+import HomePage from './routes/HomePage'
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' +

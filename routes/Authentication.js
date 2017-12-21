@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
-import { Text, TextInput, TouchableOpacity, View } from 'react-native'
+import { Text, TextInput, TouchableOpacity, View, StyleSheet } from 'react-native'
 import { Actions } from 'react-native-router-flux'
 // import styles from './styles'
 
-export default class Authentication extend Component {
+export default class Authentication extends Component {
   constructor() {
     super()
     this.state = { username: null, password: null }
@@ -24,7 +24,7 @@ export default class Authentication extend Component {
   render() {
     return (
       <View style={styles.container}>
-        <View style={styles.title}>Welcome</View>
+        <Text style={styles.title}> Welcome </Text>
 
         <View style={styles.form}>
           <TextInput
@@ -48,12 +48,12 @@ export default class Authentication extend Component {
             value={this.state.password}
           />
 
-          <TouchableOpacity style={styles.buttonWrapper} onPress={this.userLogin}>
-            <Text style={styles.buttonText}>Log In</Text>
+          <TouchableOpacity style={styles.buttonWrapper} onPress={this.userLogin.bind(this)}>
+            <Text style={styles.buttonText}> Log In </Text>
           </TouchableOpacity>
 
-          <TouchableOpacity style={styles.buttonWrapper} onPress={this.userSignup}>
-            <Text style={styles.buttonText}>Sign Up</Text>
+          <TouchableOpacity style={styles.buttonWrapper} onPress={this.userSignup.bind(this)}>
+            <Text style={styles.buttonText}> Sign Up </Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -68,11 +68,17 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
   },
+  buttonText: {
+    color: 'black'
+  },
   title: {
-    color: 'red',
+    color: 'red'
+  },
+  inputText: {
+
   },
   form: {
-    
+
   },
   welcome: {
     fontSize: 20,
